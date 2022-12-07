@@ -1,0 +1,39 @@
+.get_information {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .get_information input {
+    width: 100px;
+    height: 24px;
+    font-size: 18px;
+  }
+  
+  .get_information button {
+    width: 100px;
+    height: 50px;
+    margin-top: 15px;
+  }
+  
+  .get_information button:hover {
+    cursor: pointer;
+  }
+  
+  .list_people {
+    width: 700px;
+    height: 180px;
+    border: 1px solid black;
+    margin: 10px;
+    display: flex;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .list_people h3{ 
+    margin:10px;
+  
+  }
+  
+  
+  
