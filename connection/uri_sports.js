@@ -1,4 +1,4 @@
-var mysql = require('mysql');
+var mysql = require('mysql2');
 var express = require('express');
 var app = express();
 var connection = require('./connection')
