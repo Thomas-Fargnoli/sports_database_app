@@ -28,31 +28,61 @@ const Insert_Coach = () => {
     }
 
   return (
-    <div>
-      <label>First Name:</label>
-      <input type = "text" onChange ={(event) => {
-        set_f_Name(event.target.value)}} required/>
-      <label>Last Name:</label>
-      <input type = "text" onChange ={(event) => {
-        set_l_Name(event.target.value)}} required/>
-      <label>Sport:</label>
-      <input type = "text" onChange ={(event) => {
-        setSport(event.target.value)}} required />
-      <label>ID:</label>
-      <input type = "text" onChange ={(event) => {
-        setID(event.target.value)}} required/>
-      <label>Payrate:</label>
-      <input type = "text" onChange ={(event) => {
-        setPayrate(event.target.value)}} required/>
+    <div className="get_information">
+      <table>
+        <thead>
+          <tr>
+            <th><label>First Name:</label></th>
+            <th><label>Last Name:</label></th>
+            <th><label>Sport:</label></th>
+            <th><label>ID:</label></th>
+            <th><label>Payrate:</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type = "text" onChange ={(event) => {
+        set_f_Name(event.target.value)}} 
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        set_l_Name(event.target.value)}}
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        setSport(event.target.value)}} 
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        setID(event.target.value)}}
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        setPayrate(event.target.value)}}
+        /></td>
+          </tr>
+        </tbody>
+      </table>
       <button onClick = {display_coach}>insert information</button>
       <div>
       {coach_list.map((val, key) => {
         return <div className = "list_people">
-          <h3> First Name: {val.First_Name}</h3>
-          <h3> Last Name:{val.Last_Name}</h3>
-          <h3> ID: {val.ID}</h3>
-          <h3> Sport: {val.SportName}</h3>
-          <h3> Payrate: ${val.Payrate}/hr</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Sport</th>
+                <th>Payrate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{val.First_Name}</td>
+                <td>{val.Last_Name}</td>
+                <td>{val.ID}</td>
+                <td>{val.SportName}</td>
+                <td>${val.Payrate}/hr</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
       })}
       </div>

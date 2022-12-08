@@ -7,7 +7,6 @@ var cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
-// TO DO: Write post for all the update, remove, and insert statements
 // TO DO: Improve the CSS of web app to look at least a little pretty for the presentation
 
 

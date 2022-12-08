@@ -28,31 +28,61 @@ const Remove_Student = () => {
     }
 
   return (
-    <div>
-      <label>First Name:</label>
-      <input type = "text" onChange ={(event) => {
-        set_f_Name(event.target.value)}} required/>
-      <label>Last Name:</label>
-      <input type = "text" onChange ={(event) => {
-        set_l_Name(event.target.value)}} required/>
-      <label>Sport:</label>
-      <input type = "text" onChange ={(event) => {
-        setSport(event.target.value)}} required />
-      <label>ID:</label>
-      <input type = "text" onChange ={(event) => {
-        setID(event.target.value)}} required/>
-      <label>Current Credits:</label>
-      <input type = "text" onChange ={(event) => {
-        setCurrentCredits(event.target.value)}} required/>
-      <button onClick = {display_student}>Remove student</button>
+    <div className="get_information">
+      <table>
+        <thead>
+          <tr>
+            <th><label>First Name:</label></th>
+            <th><label>Last Name:</label></th>
+            <th><label>Sport:</label></th>
+            <th><label>ID:</label></th>
+            <th><label>Current Credits:</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type = "text" onChange ={(event) => {
+        set_f_Name(event.target.value)}} required
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        set_l_Name(event.target.value)}} required
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        setSport(event.target.value)}} required
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        setID(event.target.value)}} required
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
+        setCurrentCredits(event.target.value)}} required
+        /></td>
+          </tr>
+        </tbody>
+      </table>
+      <button onClick = {display_student}>update information</button>
       <div>
       {student_list.map((val, key) => {
         return <div className = "list_people">
-          <h3> First Name: {val.First_Name}</h3>
-          <h3> Last Name:{val.Last_Name}</h3>
-          <h3> ID: {val.ID}</h3>
-          <h3> Sport: {val.SportName}</h3>
-          <h3> Credits: {val.Current_credits}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>ID</th>
+                <th>Sport</th>
+                <th>Current Credits</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{val.First_Name}</td>
+                <td>{val.Last_Name}</td>
+                <td>{val.ID}</td>
+                <td>{val.SportName}</td>
+                <td>{val.Current_credits}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
       })}
       </div>

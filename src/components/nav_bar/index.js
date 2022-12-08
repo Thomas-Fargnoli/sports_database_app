@@ -1,15 +1,18 @@
 import React from "react";
-import { Nav, NavLink, NavMenu } 
-    from "./NavbarElements";
-  
+import {
+  Nav,
+  NavLink,
+  Bars,
+  NavMenu,
+  Website_Title,
+} from './NavbarElements';
+
 const Navbar = () => {
   return (
-    <>
       <Nav>
+        <Website_Title>URI Sports Database</Website_Title>
+        <Bars />
         <NavMenu>
-          <NavLink to="/about" activeStyle>
-            About
-          </NavLink>
           <NavLink to="/find_students" activeStyle>
             Find Students
           </NavLink>
@@ -20,7 +23,7 @@ const Navbar = () => {
             Sport's Workouts
           </NavLink>
           <NavLink to="/sport_info" activeStyle>
-            Sport information
+            Sport Information
           </NavLink>
           <NavLink to="/insert_coach" activeStyle>
             Insert Coach
@@ -42,8 +45,6 @@ const Navbar = () => {
           </NavLink>
         </NavMenu>
       </Nav>
-    </>
   );
 };
-  
 export default Navbar;

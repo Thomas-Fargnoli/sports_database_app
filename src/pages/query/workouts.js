@@ -26,27 +26,51 @@ const Find_Workout = () => {
     }
 
   return (
-    <div>
-      <label>Workout:</label>
-      <input type = "text" onChange ={(event) => {
+    <div className="get_information">
+      <table>
+        <thead>
+          <tr>
+            <th><label>Workout:</label></th>
+            <th><label>Sport:</label></th>
+            <th><label>Location:</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type = "text" onChange ={(event) => {
         Set_Workout_Name(event.target.value)}} 
-        />
-      <label>Sport:</label>
-      <input type = "text" onChange ={(event) => {
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
         setSport(event.target.value)}} 
-        />
-      <label>Location:</label>
-      <input type = "text" onChange ={(event) => {
+        /></td>
+            <td><input type = "text" onChange ={(event) => {
         setLocation(event.target.value)}}
-        />
+        /></td>
+          </tr>
+        </tbody>
+      </table>
       <button onClick = {display_workouts}>display information</button>
       <div>
       {workout_list.map((val, key) => {
         return <div className = "list_people">
-          <h3> Sport:{val.SportName}</h3>
-          <h3> Workout: {val.Workout_Name}</h3>
-          <h3> Reservation Length: {val.Minutes_Reserved} minutes</h3>
-          <h3> Location: {val.Location_Name}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Sport</th>
+                <th>Workout</th>
+                <th>Reservation Length</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{val.SportName}</td>
+                <td>{val.Workout_Name}</td>
+                <td>{val.Minutes_Reserved} minutes</td>
+                <td>{val.Location_Name}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
       })}
       </div>

@@ -1,39 +1,103 @@
 .get_information {
+    margin: auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
   }
+
+.get_information table{
+    justify-content: center;
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 1em;
+    min-width: 1000px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  }
+
+  .get_information th,
+  .get_information td{
+    text-align: center;
+    padding: 12px 15px;
+  }
   
+  .get_information label {
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    width: 100px;
+    height: 24px;
+    font-size: 18px;
+  }
+
   .get_information input {
+    margin: auto;
     width: 100px;
     height: 24px;
     font-size: 18px;
   }
   
   .get_information button {
-    width: 100px;
-    height: 50px;
-    margin-top: 15px;
+    box-shadow:inset 0px 1px 0px 0px #bee2f9;
+    background:linear-gradient(to bottom, #fefefe 5%, #bbbbbb 100%);
+    background-color:#858585;
+    border-radius:6px;
+    border:1px solid #bababa;
+    display:inline-block;
+    cursor:pointer;
+    color:#010914;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #eeeeee;
   }
   
   .get_information button:hover {
-    cursor: pointer;
+    background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+	  background-color:#262626;
   }
   
-  .list_people {
-    width: 700px;
-    height: 180px;
-    border: 1px solid black;
-    margin: 10px;
-    display: flex;
-    padding: 10px;
-    font-family: 'Courier New', Courier, monospace;
+  .get_information button:active {
+    position:relative;
+	  top:1px;
   }
-  
-  .list_people h3{ 
-    margin:10px;
-  
+
+  .list_people{
+    justify-content: center;
   }
+
+  .list_people table{
+    justify-content: center;
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 1em;
+    min-width: 1000px;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  }
+
+  .list_people thead tr{
+    background-color: black;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  .list_people th,
+  .list_people td{
+    padding: 12px 15px;
+  }
+
+  .list_people tbody tr{
+    background-color: rgb(198, 196, 196);
+  }
+
+  .list_people tbody tr:last-of-type{
+    border-bottom: 2px solid black;
+  }
+
   
   
   

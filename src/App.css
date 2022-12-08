@@ -21,13 +21,10 @@
 }
 
 .list_people {
-  width: 700px;
-  height: 180px;
-  border: 1px solid black;
-  margin: 10px;
-  display: flex;
-  padding: 10px;
-  font-family: 'Courier New', Courier, monospace;
+  border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
 }
 
 .list_people h3{ 

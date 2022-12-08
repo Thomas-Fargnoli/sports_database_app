@@ -19,19 +19,43 @@ const Sport_Info = () => {
     }
 
   return (
-    <div>
-      <label>Sport:</label>
-      <input type = "text" onChange ={(event) => {
+    <div className="get_information">
+      <table>
+        <thead>
+          <tr>
+            <th><label>Sport:</label></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type = "text" onChange ={(event) => {
         setSport(event.target.value)}} 
-        />
+        /></td>
+          </tr>
+        </tbody>
+      </table>
       <button onClick = {display_sport_info}>display information</button>
       <div>
       {sport_info_list.map((val, key) => {
         return <div className = "list_people">
-          <h3> Sport:{val.SportName}</h3>
-          <h3> Member Amount: {val.members_amount}</h3>
-          <h3> Practice Location: {val.Location_Name}</h3>
-          <h3> Coach: {val.First_Name} {val.Last_Name}</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Sport</th>
+                <th>Member Amount</th>
+                <th>Practice Location</th>
+                <th>Coach</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{val.SportName}</td>
+                <td>{val.members_amount}</td>
+                <td>{val.Location_Name}</td>
+                <td>{val.First_Name} {val.Last_Name}</td>
+              </tr>
+            </tbody>
+          </table>
           </div>
       })}
       </div>
