@@ -18,13 +18,13 @@ app.post('/students', function(req,res){
   
   let ID = req.body.id;
   let credits = req.body.credits;
-  let sql = "SELECT * FROM person NATURAL JOIN student NATURAL JOIN enrollment"
+  let sql = "SELECT * FROM Person NATURAL JOIN Student NATURAL JOIN Enrollment"
   if (first_name != '' || last_name != '' || sport_name != '' || ID != '' || credits != ''){
     let instruction = " WHERE"
     let instruction_num = 0
     if (first_name != '') {
       if (instruction_num > 0) {
-        instruction = " and"
+        instruction = " AND"
       }
       sql += instruction + " First_Name = '" + first_name + "'"
       instruction_num += 1
@@ -33,7 +33,7 @@ app.post('/students', function(req,res){
       if (instruction_num > 0) {
         instruction = " AND"
       }
-      sql += instruction + " last_Name = '" + last_name + "'" ;
+      sql += instruction + " Last_Name = '" + last_name + "'" ;
       instruction_num += 1
     } 
     if (ID != ''){
@@ -54,7 +54,7 @@ app.post('/students', function(req,res){
     }
     if ( credits != ''){
       if (instruction_num > 0) {
-        instruction = " and"
+        instruction = " AND"
       }
       sql += instruction + " Current_credits = '" + credits + "'" ;
       instruction_num += 1
@@ -73,7 +73,7 @@ app.post('/coaches', function(req,res){
   let last_name = req.body.lastName;
   let sport_name = req.body.sport;
   let ID = req.body.id;
-  let sql = "SELECT * FROM person NATURAL JOIN coach"
+  let sql = "SELECT * FROM Person NATURAL JOIN coach"
   if (first_name != '' || last_name != '' || sport_name != '' || ID != '' ){
     let instruction = " WHERE"
     let instruction_num = 0
@@ -88,7 +88,7 @@ app.post('/coaches', function(req,res){
       if (instruction_num > 0) {
         instruction = " AND"
       }
-      sql += instruction + " last_Name = '" + last_name + "'" ;
+      sql += instruction + " Last_Name = '" + last_name + "'" ;
       instruction_num += 1
     } 
     if (ID != ''){
@@ -119,13 +119,13 @@ app.post('/workouts', function(req,res){
   let workout = req.body.workout;
   let sport_name = req.body.sport;
   let location = req.body.location;
-  let sql = "SELECT * FROM training NATURAL JOIN workout"
+  let sql = "SELECT * FROM Training NATURAL JOIN Workout"
   if (workout != '' || location != '' || sport_name != '' ){
     let instruction = " WHERE"
     let instruction_num = 0
     if (workout != '') {
       if (instruction_num > 0) {
-        instruction = " and"
+        instruction = " AND"
       }
       sql += instruction + " Workout_Name = '" + workout + "'"
       instruction_num += 1
@@ -156,7 +156,7 @@ app.post('/workouts', function(req,res){
 
 app.post('/sport_info', function(req,res){
   let sport_name = req.body.sport;
-  let sql = "SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN person)";
+  let sql = "SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN Person)";
   console.log(sport_name);
   if (sport_name != ''){
     sql += " WHERE SportName = '" + sport_name + "'";
@@ -184,7 +184,7 @@ app.post('/insert_coach', function(req,res){
   connection.query("INSERT INTO coach VALUES (" +payrate+", '"+id+"', '"+sport_name+"'); ", function(err,result){
     if (err) throw err;
   })
-  connection.query("SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN person) WHERE First_Name = '" + first_name + "' AND Last_Name = '" + last_name+"'", function(err,result){
+  connection.query("SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN Person) WHERE First_Name = '" + first_name + "' AND Last_Name = '" + last_name+"'", function(err,result){
     if (err) throw err;
     res.send(result);
   })
@@ -201,10 +201,10 @@ app.post('/update_coach', function(req,res){
   connection.query("UPDATE coach SET Payrate = " + payrate + ",SportName = '" + sport_name +"' WHERE id = '"+id+"';" , function(err,result){
     if (err) throw err;
   })
-  connection.query("UPDATE person SET First_Name = '" + first_name + "', Last_Name = '" + last_name +"' WHERE ID = '"+id+"';", function(err,result){
+  connection.query("UPDATE Person SET First_Name = '" + first_name + "', Last_Name = '" + last_name +"' WHERE ID = '"+id+"';", function(err,result){
     if (err) throw err;
   })
-  connection.query("SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN person) WHERE ID = '"+id+"'", function(err,result){
+  connection.query("SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN Person) WHERE ID = '"+id+"'", function(err,result){
     if (err) throw err;
     res.send(result);
   })
@@ -215,7 +215,7 @@ app.post('/remove_coach', function(req,res){
   sport_name = sport_name.replace(/'/g, "\\'")
   let id = req.body.id;
   
-  connection.query("SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN person) WHERE ID = '"+id+"'", function(err,result){
+  connection.query("SELECT * FROM sport NATURAL JOIN (coach NATURAL JOIN Person) WHERE ID = '"+id+"'", function(err,result){
     if (err) throw err;
     res.send(result);
   })
@@ -224,7 +224,7 @@ app.post('/remove_coach', function(req,res){
     if (err) throw err;
   })
 
-  connection.query("DELETE FROM person WHERE id = '"+id+"';" , function(err,result){
+  connection.query("DELETE FROM Person WHERE id = '"+id+"';" , function(err,result){
     if (err) throw err;
   })
 
@@ -244,15 +244,15 @@ app.post('/insert_student', function(req,res){
     if (err) throw err;
   })
 
-  connection.query("INSERT INTO student VALUES ( '"+id+"', " +"'"+current_credits+"');", function(err,result){
+  connection.query("INSERT INTO Student VALUES ( '"+id+"', " +"'"+current_credits+"');", function(err,result){
     if (err) throw err;
   })
 
-  connection.query("INSERT INTO enrollment VALUES ( '"+id+"', " +"'"+sport_name+"');", function(err,result){
+  connection.query("INSERT INTO Rnrollment VALUES ( '"+id+"', " +"'"+sport_name+"');", function(err,result){
     if (err) throw err;
   })
 
-  connection.query("SELECT * FROM person NATURAL JOIN student NATURAL JOIN enrollment WHERE First_Name = '" + first_name + "' AND Last_Name = '" + last_name+"'", function(err,result){
+  connection.query("SELECT * FROM Person NATURAL JOIN Student NATURAL JOIN Rnrollment WHERE First_Name = '" + first_name + "' AND Last_Name = '" + last_name+"'", function(err,result){
     if (err) throw err;
     res.send(result);
   })
@@ -266,19 +266,19 @@ app.post('/update_student', function(req,res){
   let id = req.body.id;
   let current_credits = req.body.current_credits;
   
-  connection.query("UPDATE student SET Current_credits = '" + current_credits + "' WHERE id = '"+id+"';", function(err,result){
+  connection.query("UPDATE Student SET Current_credits = '" + current_credits + "' WHERE id = '"+id+"';", function(err,result){
     if (err) throw err;
   })
 
-  connection.query("UPDATE person SET First_Name = '" + first_name + "', Last_Name = '" + last_name +"' WHERE ID = '"+id+"';", function(err,result){
+  connection.query("UPDATE Person SET First_Name = '" + first_name + "', Last_Name = '" + last_name +"' WHERE ID = '"+id+"';", function(err,result){
     if (err) throw err;
   })
 
-  connection.query("UPDATE enrollment SET SportName = '"+ sport_name+"' WHERE ID = '" + id +"';", function(err,result){
+  connection.query("UPDATE Enrollment SET SportName = '"+ sport_name+"' WHERE ID = '" + id +"';", function(err,result){
     if (err) throw err;
   })
   
-  connection.query("SELECT * FROM person NATURAL JOIN student NATURAL JOIN enrollment WHERE First_Name = '" + first_name + "' AND Last_Name = '" + last_name+"'", function(err,result){
+  connection.query("SELECT * FROM Person NATURAL JOIN Student NATURAL JOIN Enrollment WHERE First_Name = '" + first_name + "' AND Last_Name = '" + last_name+"'", function(err,result){
     if (err) throw err;
     res.send(result);
   })
@@ -289,20 +289,20 @@ app.post('/remove_student', function(req,res){
   sport_name = sport_name.replace(/'/g, "\\'")
   let id = req.body.id;
   
-  connection.query("SELECT * FROM person NATURAL JOIN student NATURAL JOIN enrollment WHERE ID = '" + id +"'", function(err,result){
+  connection.query("SELECT * FROM Person NATURAL JOIN Student NATURAL JOIN Enrollment WHERE ID = '" + id +"'", function(err,result){
     if (err) throw err;
     res.send(result);
   })
 
-  connection.query("DELETE FROM student WHERE id = '"+id+"';", function(err,result){
+  connection.query("DELETE FROM Student WHERE ID = '"+id+"';", function(err,result){
     if (err) throw err;
   })
 
-  connection.query("DELETE FROM enrollment WHERE id = '"+id+"';", function(err,result){
+  connection.query("DELETE FROM Enrollment WHERE ID = '"+id+"';", function(err,result){
     if (err) throw err;
   })
   
-  connection.query("DELETE FROM person WHERE id = '"+id+"';", function(err,result){
+  connection.query("DELETE FROM Person WHERE ID = '"+id+"';", function(err,result){
     if (err) throw err;
   })
 });
