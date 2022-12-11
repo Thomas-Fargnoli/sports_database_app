@@ -1,7 +1,7 @@
-var mysql = require("mysql2");
+var mysql = require("mysql");
 
 var connection = mysql.createConnection({
-    host: 'uri-sports-database.c7ccbxtdxaaj.us-east-2.rds.amazonaws.com',
+    host: 'localhost',
     port: 3306,
     database: 'Sports_Database',
     user: 'root',

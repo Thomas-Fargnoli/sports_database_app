@@ -1,4 +1,4 @@
-var mysql = require('mysql2');
+var mysql = require('mysql');
 var express = require('express');
 var app = express();
 var connection = require('./connection')
@@ -247,7 +247,7 @@ app.post('/insert_student', function(req,res){
     if (err) throw err;
   })
 
-  connection.query("INSERT INTO Rnrollment VALUES ( '"+id+"', " +"'"+sport_name+"');", function(err,result){
+  connection.query("INSERT INTO Enrollment VALUES ( '"+id+"', " +"'"+sport_name+"');", function(err,result){
     if (err) throw err;
   })
 
