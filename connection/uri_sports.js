@@ -306,8 +306,8 @@ app.post('/remove_student', function(req,res){
   })
 });
 
-app.listen(3001, function(){
-  console.log('App Listening on port 3000');
+app.listen(process.env.PORT, function(){
+  console.log('App Listening on port ${PORT}');
   connection.connect(function(err){
     if(err) throw err;
     console.log('Database connected!');
