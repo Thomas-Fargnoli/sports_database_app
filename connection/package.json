@@ -4,12 +4,14 @@
   "description": "",
   "main": "uri_sports.js",
   "scripts": {
+    "start": "node uri_sports.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Thomas Fargnoli",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
   }
 }
